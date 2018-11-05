@@ -1,6 +1,7 @@
 package com.thanos.api;
 
 import com.thanos.api.ApiApplication;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +27,12 @@ public class IndexControllerTest {
 
     @Test
     public void selectCommonCodeListControllerTest() throws Exception {
-        System.out.println("#############");
         String uri = "/";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri).accept(MediaType.APPLICATION_JSON)).andReturn();
         int status = mvcResult.getResponse().getStatus();
         String content = mvcResult.getResponse().getContentAsString();
 
-        System.out.println(content);
+        Assert.assertEquals(status, 200);
 
     }
 
