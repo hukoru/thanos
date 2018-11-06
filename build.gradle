@@ -19,6 +19,8 @@ repositories {
     mavenCentral()
 }
 
+
+
 subprojects {       //subPorject 의 공통된 설정
 
     apply plugin: 'idea'
