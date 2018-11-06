@@ -2,6 +2,10 @@
 group 'com.thanos'
 version '1.0-SNAPSHOT'
 
+
+apply plugin: 'com.github.kt3k.coveralls'
+apply plugin: 'jacoco'
+
 buildscript {
     ext {
         springBootVersion = '2.0.3.RELEASE'
@@ -19,7 +23,12 @@ repositories {
     mavenCentral()
 }
 
-
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
 
 subprojects {       //subPorject 의 공통된 설정
 
