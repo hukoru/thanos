@@ -4,4 +4,3 @@ api/build/
 api/out/
 gradle*
 thanos.iml
-.coveralls.yml
