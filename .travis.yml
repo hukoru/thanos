@@ -4,10 +4,10 @@ jdk:
 
 install: true
 
-script: gradle build
+script: gradle :api:build
 
 before_install:
-- gradle :api clean
+- gradle :api :api:clean
 
 branches:
   only:
