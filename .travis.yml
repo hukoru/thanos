@@ -12,3 +12,6 @@ before_install:
 branches:
   only:
   - master
+
+after_success:
+- gradle :api:clean cobertura:cobertura coveralls:report
