@@ -16,6 +16,3 @@ branches:
 cache:
   directories:
   - '$HOME/.gradle'
-
-after_success:
-- gradle :api:clean jacocoTestReport coveralls

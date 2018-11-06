@@ -1,10 +1,6 @@
-
 group 'com.thanos'
 version '1.0-SNAPSHOT'
 
-
-apply plugin: 'com.github.kt3k.coveralls'
-apply plugin: 'jacoco'
 
 buildscript {
     ext {
@@ -15,7 +11,6 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
     }
 }
 
@@ -23,12 +18,6 @@ repositories {
     mavenCentral()
 }
 
-jacocoTestReport {
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-}
 
 subprojects {       //subPorject 의 공통된 설정
 
