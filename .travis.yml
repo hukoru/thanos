@@ -13,5 +13,9 @@ branches:
   only:
   - master
 
+cache:
+  directories:
+  - '$HOME/.gradle'
+
 after_success:
-- gradle :api:clean cobertura:cobertura coveralls:report
+- gradle :api:clean jacocoTestReport coveralls

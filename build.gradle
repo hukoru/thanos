@@ -1,5 +1,5 @@
 
-group 'com.bangbantmatch'
+group 'com.thanos'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -11,6 +11,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
     }
 }
 
