@@ -7,13 +7,13 @@ import javax.persistence.*;
 
 
 @Data
-@EqualsAndHashCode(exclude = {"sample"})
 @Entity
 public class Sample {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String description;
 
 
 }

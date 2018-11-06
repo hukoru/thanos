@@ -9,7 +9,7 @@
 
 1. 레포지토리를 로컬 컴퓨터에 복제하고 코드 작업을 시작합니다.
 ```
-git clone https://github.com/hukoru/coding_test_springboot_api
+git clone https://github.com/hukoru/thanos
 ```      
   
 <br /> 
