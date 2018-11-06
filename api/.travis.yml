@@ -7,7 +7,7 @@ install: true
 script: gradle build
 
 before_install:
-- gradle clean
+- gradle :api clean
 
 branches:
   only:
