@@ -14,10 +14,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by 서오석 on 2016. 5. 4..
- * DisplaySet: Menu를 구성하는 가장 큰 단위이며 모든 CP는 DisplaySet을 Key로 메뉴를 조회한다.
- */
+
 @Getter
 @Entity
 @Builder

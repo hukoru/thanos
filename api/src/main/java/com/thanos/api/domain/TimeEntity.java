@@ -12,14 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
 
-/**
- * Created by 서오석 on 2016. 5. 9..
- * 시간 정보만 모아둔 Entity
- * CreateDate, LastModifiedDate 사용 관련 참조 문서
- *
- * @link http://docs.spring.io/spring-data/jpa/docs/1.9.4.RELEASE/reference/html/#auditing
- * @link http://arahansa.github.io/docs_spring/jpa.html#auditing
- */
+
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class TimeEntity extends BaseEntity {

@@ -2,9 +2,7 @@ package com.thanos.api.domain;
 
 import javax.persistence.MappedSuperclass;
 
-/**
- * Created by 서오석 on 2016. 5. 19..
- */
+
 @MappedSuperclass
 public class BaseEntity {
 
