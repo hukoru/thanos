@@ -20,11 +20,11 @@ public abstract class TimeEntity extends BaseEntity {
     @Getter
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
-    protected Date created;
+    protected Date insertDate;
 
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
-    protected Date updated;
+    protected Date updateDate;
 
     @Setter
     @Getter

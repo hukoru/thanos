@@ -5,14 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Tolerate;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Getter
@@ -34,8 +29,6 @@ public class DisplaySet extends TimeEntity {
         return builder()
                 .name(name)
                 .description(description)
-                .setType(SetType.normal)
-                .status(Status.on)
                 .build();
     }
 
@@ -43,7 +36,6 @@ public class DisplaySet extends TimeEntity {
         return builder()
                 .name(name)
                 .description(description)
-                .setType(setType)
                 .status(Status.on)
                 .build();
     }
@@ -62,7 +54,6 @@ public class DisplaySet extends TimeEntity {
     }
 
     @Setter
-    @NotEmpty
     @Size(min = 1, max = 200)
     private String name;
 
@@ -76,10 +67,7 @@ public class DisplaySet extends TimeEntity {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    public void expire() {
-        this.status = Status.expire;
-        super.setExpired(new Date());
-    }
+
 
     public void off() {
         this.status = Status.off;

@@ -4,3 +4,4 @@ api/build/
 api/out/
 gradle*
 thanos.iml
+*.sql
