@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.experimental.Tolerate;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -30,13 +31,15 @@ public class Code extends TimeEntity {
     private Long insertId;      //저장회원일련번호
     private Long updateId;      //수정회원일련번호
 
-    public static Code of(Long codeId, String codeGroupId, String codeName, String languageCode, String useYn) {
+    public static Code of(Long codeId, String codeGroupId, String codeName, String languageCode, String useYn, Long insertId, Long updateId) {
         return builder()
                 .codeId(codeId)
                 .codeGroupId(codeGroupId)
                 .codeName(codeName)
                 .languageCode(languageCode)
                 .useYn(useYn)
+                .insertId(insertId)
+                .updateId(updateId)
                 .build();
     }
 

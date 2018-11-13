@@ -1,4 +1,4 @@
-package com.thanos.api;
+package com.thanos.api.controller;
 
 import com.thanos.api.ApiApplication;
 import org.junit.Assert;
@@ -33,6 +33,7 @@ public class IndexControllerTest {
         String content = mvcResult.getResponse().getContentAsString();
 
         Assert.assertEquals(status, 200);
+        System.out.println(content);
 
     }
 
