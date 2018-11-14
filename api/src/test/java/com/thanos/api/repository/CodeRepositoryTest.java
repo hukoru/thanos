@@ -27,17 +27,6 @@ public class CodeRepositoryTest {
     @Before
     public void setUp() {
 
-     /*   LocalDateTime now = LocalDateTime.now();
-
-        Code code = Code.of((long) 1, null, "공통코드", "KR", "Y", (long)1, (long)1);
-        codeRepository.save(code);
-
-
-        codeId = code.getCodeId();
-        codeName = code.getCodeName();
-        languageCode = code.getLanguageCode();
-        //insertDate*/
-
     }
 
     @Test
@@ -46,6 +35,10 @@ public class CodeRepositoryTest {
         codeRepository.save(code);
 
         List<Code> codeList = codeRepository.findAll();
+
+        codeId = code.getCodeId();
+        codeName = code.getCodeName();
+        languageCode = code.getLanguageCode();
 
         Assert.assertEquals(new Long(1), codeId);
         Assert.assertEquals("공통코드", codeName);
