@@ -33,7 +33,7 @@ public class HomeController {
     @ResponseStatus( HttpStatus.OK )
      public ResultBody healthCheck() throws UnknownHostException {
 
-       // codeService.createBy();
+        codeService.createBy();
         userService.createBy();
 
         return new ResultBody();

@@ -10,8 +10,7 @@ import javax.persistence.*;
 @Getter(AccessLevel.PUBLIC)
 @Entity
 @Table(name = "users")
-public class User extends Auditable<Long>
-{
+public class User extends Auditable<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;

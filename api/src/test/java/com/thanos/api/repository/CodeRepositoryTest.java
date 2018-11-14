@@ -30,8 +30,8 @@ public class CodeRepositoryTest {
     }
 
     @Test
-    public void inserCodeTest() {
-        Code code = Code.of((long) 1, null, "공통코드", "KR", "Y", (long)1, (long)1);
+    public void insertCodeTest() {
+        Code code = Code.of((long) 1, null, "공통코드", "KR", "Y");
         codeRepository.save(code);
 
         List<Code> codeList = codeRepository.findAll();
@@ -45,5 +45,15 @@ public class CodeRepositoryTest {
         Assert.assertEquals("KR", languageCode);
 
         System.out.println(codeList.size());
+    }
+
+    @Test
+    public void updateCodeTest() {
+        Code code = Code.of((long) 1, null, "공통코드", "KR", "Y");
+        codeRepository.save(code);
+
+        Code resultCode = codeRepository.getOne((long)1);
+
+        codeRepository.save(resultCode);
     }
 }

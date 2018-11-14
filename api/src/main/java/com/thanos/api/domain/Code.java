@@ -1,18 +1,20 @@
 package com.thanos.api.domain;
 
-import lombok.Data;
-
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Tolerate;
 
 import javax.persistence.*;
-import java.util.Date;
 
-@Data
+@Setter(AccessLevel.PUBLIC)
+@Getter(AccessLevel.PUBLIC)
 @Entity
 @Builder
 @Table(name="COMMON_CODE")
-public class Code extends TimeEntity {
+public class Code extends Auditable<Long> {
+
     private static final long serialVersionUID = 1L;
 
     @Tolerate
@@ -28,18 +30,14 @@ public class Code extends TimeEntity {
     private String languageCode;    //언어코드
     private String useYn;           //사용여부
 
-    private Long insertId;      //저장회원일련번호
-    private Long updateId;      //수정회원일련번호
 
-    public static Code of(Long codeId, String codeGroupId, String codeName, String languageCode, String useYn, Long insertId, Long updateId) {
+    public static Code of(Long codeId, String codeGroupId, String codeName, String languageCode, String useYn) {
         return builder()
             .codeId(codeId)
             .codeGroupId(codeGroupId)
             .codeName(codeName)
             .languageCode(languageCode)
             .useYn(useYn)
-            .insertId(insertId)
-            .updateId(updateId)
             .build();
     }
 
