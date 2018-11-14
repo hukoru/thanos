@@ -33,14 +33,14 @@ public class Code extends TimeEntity {
 
     public static Code of(Long codeId, String codeGroupId, String codeName, String languageCode, String useYn, Long insertId, Long updateId) {
         return builder()
-                .codeId(codeId)
-                .codeGroupId(codeGroupId)
-                .codeName(codeName)
-                .languageCode(languageCode)
-                .useYn(useYn)
-                .insertId(insertId)
-                .updateId(updateId)
-                .build();
+            .codeId(codeId)
+            .codeGroupId(codeGroupId)
+            .codeName(codeName)
+            .languageCode(languageCode)
+            .useYn(useYn)
+            .insertId(insertId)
+            .updateId(updateId)
+            .build();
     }
 
 }
