@@ -41,26 +41,15 @@ public class CodeRepositoryTest {
     }
 
     @Test
-    public void isCodeName() {
-
-        Assert.assertEquals(new Long(1), codeId);
-        Assert.assertEquals("공통코드", codeName);
-        Assert.assertEquals("KR", languageCode);
-
-        //codeRepository.save(codeId);
-
-        List<Code> codeList = codeRepository.findAll();
-
-        System.out.println(codeList.size());
-
-    }
-
-    @Test
     public void inserCodeTest() {
         Code code = Code.of((long) 1, null, "공통코드", "KR", "Y", (long)1, (long)1);
         codeRepository.save(code);
 
         List<Code> codeList = codeRepository.findAll();
+
+        Assert.assertEquals(new Long(1), codeId);
+        Assert.assertEquals("공통코드", codeName);
+        Assert.assertEquals("KR", languageCode);
 
         System.out.println(codeList.size());
     }
