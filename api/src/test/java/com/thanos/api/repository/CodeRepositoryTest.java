@@ -9,7 +9,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -51,8 +50,10 @@ public class CodeRepositoryTest {
     public void updateCodeTest() {
         Code code = Code.of((long) 1, null, "공통코드", "KR", "Y");
         codeRepository.save(code);
+        code = Code.of((long) 2, null, "공통코드2", "KR", "Y");
+        codeRepository.save(code);
 
-        Code resultCode = codeRepository.getOne((long)1);
+        Code resultCode = codeRepository.getOne((long)2);
 
         codeRepository.save(resultCode);
     }

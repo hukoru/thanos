@@ -21,6 +21,7 @@ git clone https://github.com/hukoru/thanos
 4. Gradle 4.2 이상
 
 <br /> 
+
 ### Installing
 
 Idea Lombok Plug-in 설치
@@ -33,6 +34,15 @@ Enable annotation processing 체크
 ```
 
 <br /> 
+
+테스트 작업 시 자동으로 apt task를 먼저 수행하게 변경
+
+```
+Build, Execution, Deployment -> Gradle -> Runner
+
+Delegate IDE build/run action to gradle 체크
+Gradle Task Runner 으로 선택 
+```
 
 ## Running the tests
 
@@ -50,10 +60,10 @@ Give an example
 
 ### Break down into end to end tests
 
-테스트 하는 방법 기술할것 !
+API Module test를 하려면 아래처럼 :module명 기술 
 
 ```
-Give an example
+gradle :api:build
 ```
 
 <br /> 

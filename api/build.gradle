@@ -29,7 +29,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-jetty")
     // end::jetty[]
 
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    //compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile "com.coupang:spring-boot-starter-data-requery:2.0.1"
 
     compile 'io.projectreactor.ipc:reactor-netty:0.7.1.RELEASE'
     compile 'org.springframework:spring-context:5.0.1.RELEASE'
