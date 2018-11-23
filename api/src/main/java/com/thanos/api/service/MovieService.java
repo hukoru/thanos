@@ -5,6 +5,8 @@ import com.thanos.api.domain.MovieEvent;
 import com.thanos.api.repository.MovieReactiveRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -19,7 +21,19 @@ import static java.time.LocalDateTime.now;
 @RequiredArgsConstructor
 public class MovieService {
 
-  final MovieReactiveRepository repository;
+    final MovieReactiveRepository repository;
+
+
+  public Flux<Movie> addMovie() {
+      Flux<Movie> flux = Flux.just(new Movie("Walter"),
+          new Movie("Skyler"),
+          new Movie("Saul"),
+          new Movie("Jesse"));
+
+      repository.insert(flux).subscribe();
+
+      return repository.findAll();
+  }
 
   public Flux<Movie> getAll() {
     return repository.findAll();

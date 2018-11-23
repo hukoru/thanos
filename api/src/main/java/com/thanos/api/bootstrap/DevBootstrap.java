@@ -42,7 +42,6 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         authorRepository.save(eric);
         bookRepository.save(ddd);
 
-
         //Rod
         Author rod = new Author("Rod", "Johnson");
         Book noEJB = new Book("J2EE Development without EJB", "23444", "Wrox" );
@@ -53,7 +52,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         bookRepository.save(noEJB);
 
         movieReactiveRepository.deleteAll()
-            .thenMany(Flux.just("ololo", "trololo")
+            .thenMany(Flux.just("안녕하세요", "네 반갑습니다.", "안녕하세요~")
                 .map(Movie::new)
                 .flatMap(movieReactiveRepository::save))
             .subscribe(null, null, () ->
