@@ -7,7 +7,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Repository
-public interface MovieReactiveRepository extends ReactiveMongoRepository<Movie, String> {
+public interface  MovieReactiveRepository extends ReactiveMongoRepository<Movie, String> {
 
   Mono<Movie> findFirstByTitleContainingIgnoreCase(final String title);
 
