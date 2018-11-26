@@ -1,35 +1,25 @@
 package com.thanos.api.reactive;
 
-import com.thanos.api.domain.Code;
-import com.thanos.api.repository.CodeRepository;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles(profiles = "development")
 public class ReactiveTest {
 
-
-
     @Before
     public void setUp() {
 
     }
-
-
 
 
     @Test
@@ -54,6 +44,8 @@ public class ReactiveTest {
 
     //03. Create a Flux from a List that contains 2 values "foo" and "bar"
     Flux<String> fooBarFluxFromList() {
+
+        //Flux.fromIterable(List.of("1"));
         /*
         Flux.fromIterable(List.of("foo","bar")); //JAVA 9
 
@@ -74,9 +66,9 @@ public class ReactiveTest {
     Flux<Long> counter() throws InterruptedException {
         Flux.interval(Duration.ofMillis(100))
             .take(10);
-      //      .subscribe(System.out::println);
+        //  .subscribe(System.out::println);
 
-    //    Thread.sleep(5000);
+        // Thread.sleep(5000);
 
         return null;
     }
@@ -86,21 +78,18 @@ public class ReactiveTest {
         return Mono.empty();
     }
 
-//========================================================================================
 
     //07. Return a Mono that never emits any signal
     Mono<String> monoWithNoSignal() {
         return Mono.never();
     }
 
-//========================================================================================
 
     //08. Return a Mono that contains a "foo" value
     Mono<String> fooMono() {
         return Mono.just("foo");
     }
 
-//========================================================================================
 
     //09. Create a Mono that emits an IllegalStateException
     Mono<String> errorMono() {
