@@ -5,7 +5,6 @@ import lombok.experimental.Tolerate;
 
 import javax.persistence.*;
 
-@Getter
 @Entity
 @Builder
 @EqualsAndHashCode(of = "accountId", callSuper = false)
@@ -27,6 +26,11 @@ public class Account extends  Auditable<Long> {
 
     @Setter
     private String providerId;      //인증 제공사 타입
+
+    //UUID
+
+    //PUSH TOKEN
+    //OS Version
 
     @Enumerated(EnumType.STRING)
     ProviderType providerType;

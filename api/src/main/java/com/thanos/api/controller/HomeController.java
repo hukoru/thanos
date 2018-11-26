@@ -1,7 +1,9 @@
 package com.thanos.api.controller;
 
 import com.thanos.api.common.constant.ResponseCode;
+import com.thanos.api.domain.Account;
 import com.thanos.api.domain.Home;
+import com.thanos.api.repository.AccountRepository;
 import com.thanos.api.result.ResultBody;
 import com.thanos.api.service.CodeService;
 import com.thanos.api.service.UserService;
@@ -21,7 +23,7 @@ public class HomeController {
     private CodeService codeService;
 
     @Autowired
-    private UserService userService;
+    private AccountRepository accountRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseStatus( HttpStatus.OK )
@@ -33,8 +35,10 @@ public class HomeController {
     @ResponseStatus( HttpStatus.OK )
      public ResultBody healthCheck() throws UnknownHostException {
 
-        codeService.createBy();
-        userService.createBy();
+        Account account = Account.of("default", Account.ProviderType.EMAIL, "hukoru@naver.com", "glasowk");
+
+        //    Account.of("DEFAULT", "hukoru@naver.com", Account.ProviderType.KAKAOTALK);
+        accountRepository.save(account);
 
         return new ResultBody();
 

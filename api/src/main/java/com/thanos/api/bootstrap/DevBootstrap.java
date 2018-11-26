@@ -1,27 +1,22 @@
 package com.thanos.api.bootstrap;
 
-import com.thanos.api.domain.Author;
-import com.thanos.api.domain.Book;
-import com.thanos.api.repository.AuthorRepository;
-import com.thanos.api.repository.BookRepository;
+
+import com.thanos.api.domain.Account;
+import com.thanos.api.repository.AccountRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Flux;
 
 @Slf4j
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-    private AuthorRepository authorRepository;
-    private BookRepository bookRepository;
+    private AccountRepository accountRepository;
 
 
-    public DevBootstrap(AuthorRepository authorRepository, BookRepository bookRepository) {
-        this.authorRepository = authorRepository;
-        this.bookRepository = bookRepository;
-     //   this.movieReactiveRepository = movieReactiveRepository;
+    public DevBootstrap(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
     }
 
     @Override
@@ -31,7 +26,18 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void initData(){
 
-        //Eric
+        Account account = Account.of("default", Account.ProviderType.EMAIL, "hukoru@naver.com", "glasowk");
+
+        //    Account.of("DEFAULT", "hukoru@naver.com", Account.ProviderType.KAKAOTALK);
+        accountRepository.save(account);
+
+
+      //  System.out.println(account.getProviderId());
+        System.out.println(account.getAccountId());
+
+
+
+/*        //Eric
         Author eric = new Author("Eric", "Evans");
         Book ddd = new Book("Domain Driven Design", "1234", "Harper Collins");
         eric.getBooks().add(ddd);
@@ -47,7 +53,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         noEJB.getAuthors().add(rod);
 
         authorRepository.save(rod);
-        bookRepository.save(noEJB);
+        bookRepository.save(noEJB);*/
 /*
         movieReactiveRepository.deleteAll()
             .thenMany(Flux.just("안녕하세요", "네 반갑습니다.", "안녕하세요~")

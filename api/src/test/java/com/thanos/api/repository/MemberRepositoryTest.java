@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles(profiles = "development")
-public class AccountRepositoryTest {
+public class MemberRepositoryTest {
 
     @MockBean
     private AccountRepository accountRepository;
@@ -26,19 +26,19 @@ public class AccountRepositoryTest {
     }
 
     @Test
-    public void saveAcountTest() {
+    public void saveMemberTest() {
 
-        Account account = Account.of("DEFAULT", (long)1, "hukoru@naver.com", Account.ProviderType.KAKAOTALK);
+        Account account = Account.of("DEFAULT", (long) 1, "hukoru@naver.com", Account.ProviderType.KAKAOTALK);
         accountRepository.save(account);
 
         accountId = account.getAccountId();
-        //providerId = account.getProviderId();
+      //  providerId = account.getProviderId();
 
         System.out.println(accountId.toString());
         System.out.println(providerId);
 
         Assert.assertEquals(new Long(1), accountId);
-    //    Assert.assertEquals("hukoru@naver.com", providerId);
+      //  Assert.assertEquals("hukoru@naver.com", providerId);
 
 
       //  System.out.println(codeList.size());
