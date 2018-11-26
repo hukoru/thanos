@@ -2,3 +2,4 @@ rootProject.name = 'thanos'
 
 include 'api'
 include 'schedule'
+include 'design'
