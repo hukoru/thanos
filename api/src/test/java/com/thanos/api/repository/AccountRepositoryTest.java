@@ -28,10 +28,9 @@ public class AccountRepositoryTest {
     @Test
     public void saveAcountTest() {
 
-        Account account = Account.of("DEFAULT", (long)1, "hukoru@naver.com", Account.ProviderType.KAKAOTALK);
+        Account account = Account.of("DEFAULT",Account.ProviderType.KAKAOTALK , "hukoru@naver.com", "1234");
         accountRepository.save(account);
 
-        accountId = account.getAccountId();
         //providerId = account.getProviderId();
 
         System.out.println(accountId.toString());

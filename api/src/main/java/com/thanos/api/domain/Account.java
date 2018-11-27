@@ -7,13 +7,13 @@ import javax.persistence.*;
 
 @Entity
 @Builder
-@EqualsAndHashCode(of = "accountId", callSuper = false)
 public class Account extends  Auditable<Long> {
 
-    @Getter
     @Id
-    @GeneratedValue
-    private Long accountId;         //계정 일련번호 PK
+    @Getter
+    @Setter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;         //계정 일련번호 PK
 
     @Setter
     private String loginId;         //로그인 아이디 (이메일 가입시에만 적용)
@@ -46,6 +46,8 @@ public class Account extends  Auditable<Long> {
 
     }
 
+    @OneToOne
+    private Member member;
 
     @Tolerate
     private Account(){}
@@ -68,10 +70,9 @@ public class Account extends  Auditable<Long> {
             .build();
     }
 
-    public static Account of(String displaySetName , Long accountId, String providerId, ProviderType providerType) {
+    public static Account of(String displaySetName , String providerId, ProviderType providerType) {
         return builder()
             .displaySetName(displaySetName)
-            .accountId(accountId)
             .providerType(providerType)
             .providerId(providerId)
             .build();

@@ -11,7 +11,9 @@ spring:
     database: h2
     hibernate:
       ddl-auto: create-drop
-      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      naming:
+          physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
     show-sql: true
     properties:
       hibernate.format_sql: true

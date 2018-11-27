@@ -5,26 +5,35 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Tolerate;
+import org.springframework.boot.autoconfigure.web.ResourceProperties;
 
 import javax.persistence.*;
 
-@Getter
 @Entity
 @Builder
-@EqualsAndHashCode(of = "memberId", callSuper = false)
 public class Member extends  Auditable<Long> {
 
-    @Getter
     @Id
-    @GeneratedValue
-    private Long memberId;         //계정 일련번호 PK
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;         //계정 일련번호 PK
 
     private String nickname;    //별명
 
+    @OneToOne(mappedBy = "member",  cascade = CascadeType.ALL)
+    private Account account;
 
-    @OneToOne
-    @JoinColumn(name = "memberId" , referencedColumnName = "memberId", nullable = false)
-    private Member member;
+
+    // @JoinColumn(name = "accountId" , referencedColumnName = "accountId", nullable = false)
+    // @JoinColumn(name = "accountId" ))
+    //   @JoinTable(name = "account", joinColumns = @JoinColumn(name = "accountId"),
+    //      inverseJoinColumns = @JoinColumn(name = "memberId"))
+
+    public static Member of(String nickname, Account account) {
+        return builder()
+            .nickname(nickname)
+            .account(account)
+            .build();
+    }
 
     //회원심사여부
     //생년

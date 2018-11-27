@@ -1,6 +1,7 @@
 package com.thanos.api.repository;
 
 import com.thanos.api.domain.Account;
+import com.thanos.api.domain.Member;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class MemberRepositoryTest {
 
     @MockBean
-    private AccountRepository accountRepository;
+    private MemberRepository memberRepository;
 
     private String providerId;
     private Long accountId;
@@ -28,16 +29,21 @@ public class MemberRepositoryTest {
     @Test
     public void saveMemberTest() {
 
-        Account account = Account.of("DEFAULT", (long) 1, "hukoru@naver.com", Account.ProviderType.KAKAOTALK);
-        accountRepository.save(account);
+        Account account = Account.of("DEFAULT",Account.ProviderType.KAKAOTALK , "hukoru@naver.com", "1234");
 
-        accountId = account.getAccountId();
-      //  providerId = account.getProviderId();
+        accountId = account.getId();
 
-        System.out.println(accountId.toString());
-        System.out.println(providerId);
+        Member member = Member.of("맥주왕,", account);
+
+        memberRepository.save(member);
+/*
+        System.out.println(member.getNickname());
+        System.out.println(member.getAccount().getAccountId());
+        System.out.println(member.getAccount());*/
 
         Assert.assertEquals(new Long(1), accountId);
+
+
       //  Assert.assertEquals("hukoru@naver.com", providerId);
 
 
