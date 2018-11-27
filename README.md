@@ -1,112 +1,94 @@
-[![Build Status](https://travis-ci.org/hukoru/thanos.svg?branch=master)](https://travis-ci.org/hukoru/thanos)
+# myapp
+This application was generated using JHipster 5.7.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.7.0](https://www.jhipster.tech/documentation-archive/v5.7.0).
 
-# 프로젝트 개요
+This is a "microservice" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
 
-<br /> 
-<br /> 
+This application is configured for Service Discovery and Configuration with the JHipster-Registry. On launch, it will refuse to start if it is not able to connect to the JHipster-Registry at [http://localhost:8761](http://localhost:8761). For more information, read our documentation on [Service Discovery and Configuration with the JHipster-Registry][].
 
-## Getting Started
+## Development
 
-1. 레포지토리를 로컬 컴퓨터에 복제하고 코드 작업을 시작합니다.
-```
-git clone https://github.com/hukoru/thanos
-```      
-  
-<br /> 
+To start your application in the dev profile, simply run:
 
-### Prerequisites
+    ./gradlew
 
-1. Git(1.7.9 이상 지원)
-1. JDK 1.8
-4. Gradle 4.2 이상
 
-<br /> 
+For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
 
-### Installing
 
-Idea Lombok Plug-in 설치
-Idea 설정
 
-```
-Build, Execution, Deployment -> Compiler -> Annotation Processors 
+## Building for production
 
-Enable annotation processing 체크
-```
+To optimize the myapp application for production, run:
 
-<br /> 
+    ./gradlew -Pprod clean bootWar
 
-테스트 작업 시 자동으로 apt task를 먼저 수행하게 변경
+To ensure everything worked, run:
 
-```
-Build, Execution, Deployment -> Gradle -> Runner
+    java -jar build/libs/*.war
 
-Delegate IDE build/run action to gradle 체크
-Gradle Task Runner 으로 선택 
-```
 
-## Running the tests
+Refer to [Using JHipster in production][] for more details.
 
-Gradle 명령어로 Build 실행
-```
-gradle clean build
-```
+## Testing
 
-프로젝트별 실행 
-```
-Give an example
-```
+To launch your application's tests, run:
 
-<br /> 
+    ./gradlew test
 
-### Break down into end to end tests
+For more information, refer to the [Running tests page][].
 
-API Module test를 하려면 아래처럼 :module명 기술 
+### Code quality
+
+Sonar is used to analyse code quality. You can start a local Sonar server (accessible on http://localhost:9001) with:
 
 ```
-gradle :api:build
+docker-compose -f src/main/docker/sonar.yml up -d
 ```
 
-<br /> 
+Then, run a Sonar analysis:
 
-## Deployment
+```
+./gradlew -Pprod clean test sonarqube
+```
 
-Add additional notes about how to deploy this on a live system
+For more information, refer to the [Code quality page][].
 
-<br /> 
+## Using Docker to simplify development (optional)
 
-## Built With
+You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 
-* [Gradle](https://gradle.org/) - Gradle Build Tool
-* [IntelliJ IDEA ](https://www.jetbrains.com/idea/) - IntelliJ IDEA 
+For example, to start a postgresql database in a docker container, run:
 
-<br /> 
+    docker-compose -f src/main/docker/postgresql.yml up -d
 
-## Contributing
+To stop it and remove the container, run:
+
+    docker-compose -f src/main/docker/postgresql.yml down
+
+You can also fully dockerize your application and all the services that it depends on.
+To achieve this, first build a docker image of your app by running:
+
+    ./gradlew bootWar -Pprod jibDockerBuild
+
+Then run:
+
+    docker-compose -f src/main/docker/app.yml up -d
+
+For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`jhipster docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
+
+## Continuous Integration (optional)
+
+To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
+
+[JHipster Homepage and latest documentation]: https://www.jhipster.tech
+[JHipster 5.7.0 archive]: https://www.jhipster.tech/documentation-archive/v5.7.0
+[Doing microservices with JHipster]: https://www.jhipster.tech/documentation-archive/v5.7.0/microservices-architecture/
+[Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v5.7.0/development/
+[Service Discovery and Configuration with the JHipster-Registry]: https://www.jhipster.tech/documentation-archive/v5.7.0/microservices-architecture/#jhipster-registry
+[Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v5.7.0/docker-compose
+[Using JHipster in production]: https://www.jhipster.tech/documentation-archive/v5.7.0/production/
+[Running tests page]: https://www.jhipster.tech/documentation-archive/v5.7.0/running-tests/
+[Code quality page]: https://www.jhipster.tech/documentation-archive/v5.7.0/code-quality/
+[Setting up Continuous Integration]: https://www.jhipster.tech/documentation-archive/v5.7.0/setting-up-ci/
 
 
- 
- <br /> 
- 
-## Versioning
-
-
-
-<br /> 
-
-## Authors
-
-* **Frank Lim** - *Initial work* - [임세환](code437@gmail.com)
-
-<br /> 
-
-## License
-
-
-
-<br /> 
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
