@@ -21,9 +21,10 @@ public class Member extends  Auditable<Long> {
 
     private String nickname;    //별명
 
+
     @OneToOne
-    @JoinColumn(name = "accountId" , referencedColumnName = "accountId", nullable = false)
-    private Account account;
+    @JoinColumn(name = "memberId" , referencedColumnName = "memberId", nullable = false)
+    private Member member;
 
     //회원심사여부
     //생년

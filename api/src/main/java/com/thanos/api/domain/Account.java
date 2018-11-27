@@ -46,6 +46,7 @@ public class Account extends  Auditable<Long> {
 
     }
 
+
     @Tolerate
     private Account(){}
 
