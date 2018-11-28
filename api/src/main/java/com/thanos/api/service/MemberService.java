@@ -17,15 +17,19 @@ public class MemberService {
     private MemberRepository memberRepository;
 
 
+/*
     public Member createBy(String nickname, String displaySetName, ProviderType providerType, String loginId, String password) {
         Account account = Account.of(displaySetName, providerType, loginId, password);
         return this.createBy(nickname, account);
     }
+*/
 
+/*
     protected Member createBy(String nickname, Account account) {
-        Member member = Member.of(nickname, account);
+     /   Member member = Member.of(nickname, account);
         return this.saveBy(member);
     }
+*/
 
 
     protected Member saveBy(Member member) {

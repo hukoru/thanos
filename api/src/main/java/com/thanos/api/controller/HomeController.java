@@ -118,7 +118,10 @@ public class HomeController {
 
         Account account = Account.of("DEFAULT", ProviderType.KAKAOTALK , "hukoru@naver.com", "1234");
         Member member = Member.of("맥주왕", account);
-
+    /*    Member member = new Member();
+        member.setAccount(account);
+        member.setNickname("맥주왕");
+*/
 
         // memberService.createBy("맥주왕", "DEFAULT", ProviderType.KAKAOTALK, "hukoru@naver.com", "1234");
 

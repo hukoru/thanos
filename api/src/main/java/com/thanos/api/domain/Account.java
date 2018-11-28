@@ -20,7 +20,6 @@ public class Account {
     @OneToOne
     private Member member;
 
-
     private String loginId;         //로그인 아이디 (이메일 가입시에만 적용)
 
     private String password;        //패스워드

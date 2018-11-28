@@ -12,15 +12,12 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nickname;    //별명
 
     @OneToOne(cascade = CascadeType.ALL)
     private Account account;
 
-   /* public void setAccount(Account account) {
-        this.account = account;
-        account.setMember(this);
-    }*/
 
     public static Member of(String nickname, Account account) {
         return builder()
@@ -28,5 +25,6 @@ public class Member {
             .account(account)
             .build();
     }
+
 
 }
