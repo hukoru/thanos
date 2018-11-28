@@ -30,9 +30,9 @@ public class MemberServiceTest {
     @Test
     public void saveMemberTest() {
 
-        Account account = Account.of("DEFAULT",  "hukoru@naver.com", Account.ProviderType.KAKAOTALK);
+  //      Account account = Account.of("DEFAULT",  "hukoru@naver.com", Account.ProviderType.KAKAOTALK);
 
-        memberService.createBy(account);
+//        memberService.createBy(account);
 
 
     }

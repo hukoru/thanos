@@ -29,13 +29,13 @@ public class MemberRepositoryTest {
     @Test
     public void saveMemberTest() {
 
-        Account account = Account.of("DEFAULT",Account.ProviderType.KAKAOTALK , "hukoru@naver.com", "1234");
+  //      Account account = Account.of("DEFAULT",Account.ProviderType.KAKAOTALK , "hukoru@naver.com", "1234");
 
-        accountId = account.getId();
+//        accountId = account.getId();
 
-        Member member = Member.of("맥주왕,", account);
+//        Member member = Member.of("맥주왕,", account);
 
-        memberRepository.save(member);
+    //    memberRepository.save(member);
 /*
         System.out.println(member.getNickname());
         System.out.println(member.getAccount().getAccountId());

@@ -3,6 +3,7 @@ package com.thanos.api.controller;
 import com.thanos.api.common.constant.ResponseCode;
 import com.thanos.api.domain.*;
 import com.thanos.api.repository.CategoryRepository;
+import com.thanos.api.repository.MemberRepository;
 import com.thanos.api.repository.RecipeRepository;
 import com.thanos.api.repository.UnitOfMeasureRepository;
 import com.thanos.api.result.ResultBody;
@@ -38,6 +39,9 @@ public class HomeController {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private MemberRepository memberRepository;
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -112,13 +116,21 @@ public class HomeController {
     @ResponseStatus( HttpStatus.OK )
     public ResultBody healthcheck2() throws UnknownHostException {
 
-        codeService.modifyBy();
+        Account account = Account.of("DEFAULT", ProviderType.KAKAOTALK , "hukoru@naver.com", "1234");
+        Member member = Member.of("맥주왕", account);
+
+
+        // memberService.createBy("맥주왕", "DEFAULT", ProviderType.KAKAOTALK, "hukoru@naver.com", "1234");
+
+        memberRepository.save(member);
 
         return new ResultBody();
 
     }
 
     public List<Recipe> getRecipes() {
+
+
 
         List<Recipe> recipes = new ArrayList<>(2);
 

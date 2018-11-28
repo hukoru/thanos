@@ -1,35 +1,24 @@
 package com.thanos.api.bootstrap;
 
 import com.thanos.api.domain.*;
-import com.thanos.api.repository.AccountRepository;
 import com.thanos.api.repository.CategoryRepository;
-import com.thanos.api.repository.RecipeRepository;
+import com.thanos.api.repository.MemberRepository;
 import com.thanos.api.repository.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-
-    private CategoryRepository categoryRepository;
-
-    private UnitOfMeasureRepository unitOfMeasureRepository;
+    private MemberRepository memberRepository;
 
 
-    public DevBootstrap(CategoryRepository categoryRepository,
-                        UnitOfMeasureRepository unitOfMeasureRepository ) {
-        this.categoryRepository = categoryRepository;
-        this.unitOfMeasureRepository = unitOfMeasureRepository;
+    public DevBootstrap(MemberRepository memberRepository) {
+     //   this.accountRepository = accountRepository;
+        this.memberRepository = memberRepository;
     }
 
     @Override
@@ -39,19 +28,17 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void initData(){
 
+        System.out.println("###### start bootstrap");
+/*
+        Account account = Account.of("DEFAULT",Account.ProviderType.KAKAOTALK , "hukoru@naver.com", "1234");
+
+        Member member = new Member();
+        member.setAccount(account);
 
 
+        memberRepository.save(member);
 
-        //recipeRepository.saveAll(getRecipes());
-
-//        Account account = Account.of("default", Account.ProviderType.EMAIL, "hukoru@naver.com", "glasowk");
-
-        //    Account.of("DEFAULT", "hukoru@naver.com", Account.ProviderType.KAKAOTALK);
-  //      accountRepository.save(account);
-
-
-        //  System.out.println(account.getProviderId());
-
+        System.out.println(account.getProviderId());*/
 
 
 /*        //Eric
