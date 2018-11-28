@@ -4,11 +4,9 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by jt on 6/13/17.
- */
+
 @Entity
-public class Recipe {
+public class Recipe extends Auditable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

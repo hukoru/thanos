@@ -50,6 +50,8 @@ local.properties
 # PDT-specific
 .buildpath
 
+gradle*
+
 ######################
 # Intellij
 ######################
@@ -142,3 +144,5 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
+
+api/build

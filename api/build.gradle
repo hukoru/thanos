@@ -35,6 +35,8 @@ dependencies {
     compile 'org.springframework:spring-context:5.0.1.RELEASE'
     compile 'org.springframework:spring-webflux:5.0.1.RELEASE'
 
+    compileOnly('org.projectlombok:lombok')
+
     testCompile 'junit:junit:4.12'
     testCompile 'org.springframework:spring-test:5.0.1.RELEASE'
     testCompile "org.springframework.restdocs:spring-restdocs-webtestclient:2.0.3.BUILD-SNAPSHOT"
