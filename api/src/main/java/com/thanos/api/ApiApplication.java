@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(
     basePackageClasses = {Jsr310JpaConverters.class},  // basePackageClasses에 지정
     basePackages = {"com"})
+@EnableJpaRepositories(basePackages = {"com.thanos.api"})
 public class ApiApplication {
 
 	public static void main(String[] args) {

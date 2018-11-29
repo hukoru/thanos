@@ -9,6 +9,7 @@ import com.thanos.api.repository.UnitOfMeasureRepository;
 import com.thanos.api.result.ResultBody;
 import com.thanos.api.service.CodeService;
 import com.thanos.api.service.MemberService;
+import com.thanos.api.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +43,9 @@ public class HomeController {
 
     @Autowired
     private MemberRepository memberRepository;
+
+    @Autowired
+    private OrderService orderService;
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -126,6 +130,8 @@ public class HomeController {
         // memberService.createBy("맥주왕", "DEFAULT", ProviderType.KAKAOTALK, "hukoru@naver.com", "1234");
 
         memberRepository.save(member);
+
+        orderService.order();
 
         return new ResultBody();
 

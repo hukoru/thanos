@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-    private MemberRepository memberRepository;
+   // private MemberRepository memberRepository;
 
 
-    public DevBootstrap(MemberRepository memberRepository) {
+    public DevBootstrap() {
      //   this.accountRepository = accountRepository;
-        this.memberRepository = memberRepository;
+     //   this.memberRepository = memberRepository;
     }
 
     @Override
