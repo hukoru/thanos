@@ -1,9 +1,5 @@
 package com.thanos.api.bootstrap;
 
-import com.thanos.api.domain.*;
-import com.thanos.api.repository.CategoryRepository;
-import com.thanos.api.repository.MemberRepository;
-import com.thanos.api.repository.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

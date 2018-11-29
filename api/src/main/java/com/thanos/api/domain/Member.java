@@ -20,6 +20,12 @@ public class Member extends Auditable<Long> {
     @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
     private Account account;
 
+    public static Member of(String nickname, Account account) {
+        return builder()
+            .nickname(nickname)
+            .account(account)
+            .build();
+    }
 
     @Builder
     public Member(String nickname, final Account account) {
