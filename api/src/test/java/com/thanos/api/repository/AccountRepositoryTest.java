@@ -1,6 +1,7 @@
 package com.thanos.api.repository;
 
 import com.thanos.api.domain.Account;
+import com.thanos.api.domain.ProviderType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +16,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class AccountRepositoryTest {
 
 
-    private String providerId;
-    private Long accountId;
+    private String loginId;
+    private String provideId;
+
+    @MockBean
+    private AccountRepository accountRepository;
 
     @Before
     public void setUp() {
@@ -26,19 +30,42 @@ public class AccountRepositoryTest {
     @Test
     public void saveAcountTest() {
 
-//        Account account = Account.of("DEFAULT",Account.ProviderType.KAKAOTALK , "hukoru@naver.com", "1234");
-  //      accountRepository.save(account);
+        Account account = Account.builder()
+            .displaySetName("DEFAULT")
+            .providerType(ProviderType.KAKAOTALK)
+            .loginId("hukoru@naver.com")
+            .password("1234").build();
 
-        //providerId = account.getProviderId();
+        accountRepository.save(account);
 
-    //    System.out.println(accountId.toString());
-      //  System.out.println(providerId);
+        loginId = account.getLoginId();
 
-        //Assert.assertEquals(new Long(1), accountId);
-    //    Assert.assertEquals("hukoru@naver.com", providerId);
-
-
-      //  System.out.println(codeList.size());
+        Assert.assertEquals("hukoru@naver.com", loginId);
     }
 
+    @Test
+    public void saveAcountByEmailTest() {
+
+        //이메일 가입
+        Account account = Account.of("DEFAULT", ProviderType.EMAIL, "hukoru@naver.com", "1234");
+
+        accountRepository.save(account);
+
+        loginId = account.getLoginId();
+
+        Assert.assertEquals("hukoru@naver.com", loginId);
+    }
+
+    @Test
+    public void saveAcountByFacebookTest() {
+
+        //이메일 가입
+        Account account = Account.of("DEFAULT", ProviderType.FACEBOOK, "facebook---");
+
+        accountRepository.save(account);
+
+        provideId = account.getProviderId();
+
+        Assert.assertEquals("facebook---", provideId);
+    }
 }

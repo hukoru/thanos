@@ -4,43 +4,44 @@ import lombok.*;
 import lombok.experimental.Tolerate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
-@EqualsAndHashCode(exclude = {"member"})
 @Entity
-@Data
-@Builder
-public class Account {
+@Table(name = "account")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+public class Account extends Auditable<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
-    @OneToOne
+    @OneToOne(mappedBy = "account")
     private Member member;
 
+    @Setter
     private String loginId;         //로그인 아이디 (이메일 가입시에만 적용)
 
+    @Setter
     private String password;        //패스워드
 
-   /* @Setter
-    private String providerType;    //인증 제공사 타입*/
-
+    @Setter
     private String providerId;      //인증 제공사 타입
 
     //UUID
-
     //PUSH TOKEN
     //OS Version
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     ProviderType providerType;
 
-
+    @Setter
     private String displaySetName;
 
-
+    //이메일 인증
     public static Account of(String displaySetName, ProviderType providerType, String loginId, String password) {
         return builder()
             .displaySetName(displaySetName)
@@ -50,20 +51,21 @@ public class Account {
             .build();
     }
 
-    //써드파티 인증
-    public static Account of(String providerId, ProviderType providerType) {
-        return builder()
-            .providerType(providerType)
-            .providerId(providerId)
-            .build();
-    }
-
-    public static Account of(String displaySetName, String providerId, ProviderType providerType) {
+    public static Account of(String displaySetName, ProviderType providerType, String providerId) {
         return builder()
             .displaySetName(displaySetName)
             .providerType(providerType)
             .providerId(providerId)
             .build();
+    }
+
+    @Builder
+    public Account(String displaySetName, ProviderType providerType, String loginId, String password, String providerId) {
+        this.displaySetName = displaySetName;
+        this.providerType = providerType;
+        this.providerId= providerId;
+        this.loginId = loginId;
+        this.password = password;
     }
 
 }

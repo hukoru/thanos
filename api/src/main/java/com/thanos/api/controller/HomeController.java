@@ -2,14 +2,10 @@ package com.thanos.api.controller;
 
 import com.thanos.api.common.constant.ResponseCode;
 import com.thanos.api.domain.*;
-import com.thanos.api.repository.CategoryRepository;
-import com.thanos.api.repository.MemberRepository;
-import com.thanos.api.repository.RecipeRepository;
-import com.thanos.api.repository.UnitOfMeasureRepository;
+import com.thanos.api.repository.*;
 import com.thanos.api.result.ResultBody;
 import com.thanos.api.service.CodeService;
 import com.thanos.api.service.MemberService;
-import com.thanos.api.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +41,7 @@ public class HomeController {
     private MemberRepository memberRepository;
 
     @Autowired
-    private OrderService orderService;
+    private AccountRepository accountRepository;
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -62,56 +58,6 @@ public class HomeController {
 
 
         //memberService.createBy(account);
-        Category cat1 = new Category();
-        cat1.setDescription("American");
-        categoryRepository.save(cat1);
-
-        Category cat2 = new Category();
-        cat2.setDescription("Italian");
-        categoryRepository.save(cat2);
-
-        Category cat3 = new Category();
-        cat3.setDescription("Mexican");
-        categoryRepository.save(cat3);
-
-        Category cat4 = new Category();
-        cat4.setDescription("Fast Food");
-        categoryRepository.save(cat4);
-
-        UnitOfMeasure uom1 = new UnitOfMeasure();
-        uom1.setDescription("Teaspoon");
-        unitOfMeasureRepository.save(uom1);
-
-        UnitOfMeasure uom2 = new UnitOfMeasure();
-        uom2.setDescription("Tablespoon");
-        unitOfMeasureRepository.save(uom2);
-
-        UnitOfMeasure uom3 = new UnitOfMeasure();
-        uom3.setDescription("Cup");
-        unitOfMeasureRepository.save(uom3);
-
-        UnitOfMeasure uom4 = new UnitOfMeasure();
-        uom4.setDescription("Pinch");
-        unitOfMeasureRepository.save(uom4);
-
-        UnitOfMeasure uom5 = new UnitOfMeasure();
-        uom5.setDescription("Ounce");
-        unitOfMeasureRepository.save(uom5);
-
-        UnitOfMeasure uom6 = new UnitOfMeasure();
-        uom6.setDescription("Each");
-        unitOfMeasureRepository.save(uom6);
-
-        UnitOfMeasure uom7 = new UnitOfMeasure();
-        uom7.setDescription("Pint");
-        unitOfMeasureRepository.save(uom7);
-
-        UnitOfMeasure uom8 = new UnitOfMeasure();
-        uom8.setDescription("Dash");
-        unitOfMeasureRepository.save(uom8);
-
-        recipeRepository.saveAll(getRecipes());
-
         return new ResultBody();
 
     }
@@ -119,27 +65,31 @@ public class HomeController {
     @RequestMapping(value = "/healthcheck2", method = RequestMethod.GET)
     @ResponseStatus( HttpStatus.OK )
     public ResultBody healthcheck2() throws UnknownHostException {
+/*
 
-        Account account = Account.of("DEFAULT", ProviderType.KAKAOTALK , "hukoru@naver.com", "1234");
-        Member member = Member.of("맥주왕", account);
-    /*    Member member = new Member();
-        member.setAccount(account);
-        member.setNickname("맥주왕");
+        Account account = Account.builder()
+                            .displaySetName("DEFAULT")
+                            .providerType(ProviderType.KAKAOTALK)
+                            .loginId("hukoru@naver.com")
+                            .password("1234").build();
 */
 
-        // memberService.createBy("맥주왕", "DEFAULT", ProviderType.KAKAOTALK, "hukoru@naver.com", "1234");
+        Account account = Account.of("DEFAULT", ProviderType.KAKAOTALK, "hukoru@naver.com", "1234");
 
+
+        accountRepository.save(account);
+
+
+        Member member = Member.builder().nickname("맥주왕").account(account).build();
         memberRepository.save(member);
 
-        orderService.order();
+
 
         return new ResultBody();
 
     }
 
     public List<Recipe> getRecipes() {
-
-
 
         List<Recipe> recipes = new ArrayList<>(2);
 

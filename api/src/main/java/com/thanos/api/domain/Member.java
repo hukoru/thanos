@@ -4,10 +4,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Data
 @Entity
-@Builder
-public class Member {
+@Table(name = "member")
+@NoArgsConstructor
+@Getter
+public class Member extends Auditable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,16 +16,17 @@ public class Member {
 
     private String nickname;    //별명
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
     private Account account;
 
 
-    public static Member of(String nickname, Account account) {
-        return builder()
-            .nickname(nickname)
-            .account(account)
-            .build();
+    @Builder
+    public Member(String nickname, final Account account) {
+        this.nickname = nickname;
+        this.account = account;
     }
+
 
 
 }
