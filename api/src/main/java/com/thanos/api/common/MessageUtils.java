@@ -4,9 +4,6 @@ import org.springframework.context.MessageSource;
 
 import java.util.Locale;
 
-/**
- * Created by sungang on 2017/9/13.
- */
 public class MessageUtils {
 
 

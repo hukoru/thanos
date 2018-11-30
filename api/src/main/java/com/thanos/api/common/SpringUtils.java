@@ -4,10 +4,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-
-/**
- * Created by sungang on 2017/9/13.
- */
 public class SpringUtils implements BeanFactoryPostProcessor {
 
     private static ConfigurableListableBeanFactory beanFactory; // Spring应用上下文环境
@@ -97,7 +93,7 @@ public class SpringUtils implements BeanFactoryPostProcessor {
      * @throws BeansException
      */
     public static <T> T getBean(String name, Class<T> clz)
-            throws BeansException {
+        throws BeansException {
         T result = beanFactory.getBean(name, clz);
         return result;
     }

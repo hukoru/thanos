@@ -21,8 +21,9 @@ spring:
       hibernate.default_batch_fetch_size: 50
 
 
+
 server:
-    port: 9090
+    port: 8080
 
 logging:
   path: /tmp/log
@@ -30,3 +31,4 @@ logging:
     org:
       hibernate:
         type: trace
+

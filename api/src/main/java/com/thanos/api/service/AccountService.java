@@ -1,6 +1,7 @@
 package com.thanos.api.service;
 
 import com.thanos.api.domain.Account;
+import com.thanos.api.exceptions.GlobalErrorInfoException;
 import com.thanos.api.repository.AccountRepository;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -29,10 +30,13 @@ public class AccountService {
     }
 
     public Optional<Account> findBy(long id) {
-        Optional<Account> account = accountRepository.findById(id);
-        if (account == null)
-            System.out.println("계정이 없습니다.");
+        return accountRepository.findById(id);
 
-        return account;
+        //return accountRepository.getOne(id);
+
+        //GlobalErrorInfoException(ErrorInfoEnum.ERR0013)
+      //  return Optional.ofNullable(accountRepository.findById(id))
+     //       .orElseThrow(() -> new GlobalErrorInfoException(ErrorInfoEnum.ERR0013));
+
     }
 }

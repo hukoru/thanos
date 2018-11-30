@@ -5,7 +5,7 @@ import com.thanos.api.common.constant.GlobalErrorInfoEnum;
 import java.io.Serializable;
 
 
-public class ResultBody implements Serializable{
+public class ResultBody implements Serializable {
 
     private String serverCode = "200";
     private String serverMessage;

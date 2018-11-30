@@ -31,10 +31,6 @@ dependencies {
 
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
 
-    compile 'io.projectreactor.ipc:reactor-netty:0.7.1.RELEASE'
-    compile 'org.springframework:spring-context:5.0.1.RELEASE'
-    compile 'org.springframework:spring-webflux:5.0.1.RELEASE'
-
     compileOnly('org.projectlombok:lombok')
 
     testCompile 'junit:junit:4.12'

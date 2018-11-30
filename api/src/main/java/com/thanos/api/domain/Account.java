@@ -1,11 +1,9 @@
 package com.thanos.api.domain;
 
 import lombok.*;
-import lombok.experimental.Tolerate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
 
 @Entity
 @Table(name = "account")
@@ -39,6 +37,7 @@ public class Account extends Auditable<Long> {
 
     @Setter
     private String displaySetName;
+
 
     //이메일 인증
     public static Account of(String displaySetName, ProviderType providerType, String loginId, String password) {
