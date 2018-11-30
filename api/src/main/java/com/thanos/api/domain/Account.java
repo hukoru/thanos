@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "account")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@EqualsAndHashCode(of = "id", callSuper = false)
 public class Account extends Auditable<Long> {
 
     @Id

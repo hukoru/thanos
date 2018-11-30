@@ -75,46 +75,14 @@ public class HomeController {
 
     }
 
-    //@PathVariable("version") String version
-
     @RequestMapping(value = "/member/{memberId}", method = RequestMethod.GET)
     @ResponseBody
     public ResultBody getUser (
         @PathVariable("memberId") Long memberId
     ) throws GlobalErrorInfoException {
-
-        //throw new GlobalErrorInfoException(ErrorInfoEnum.ERR0013);
-
-        if(memberId > 1 ){
-            throw new GlobalErrorInfoException(ErrorInfoEnum.ERR0013);
-        }
-
-        return new ResultBody();
-
-        //accountService.findBy(memberId).orElseGet();
-
-       // Optional<Account> account = accountService.findBy(memberId);
-//GlobalErrorInfoEnum.PARAM_NOT_NULL
-
-     //   Optional<Account> account = accountService.findBy(memberId);
-
-        //System.out.println(ErrorInfoEnum.ERR0002.getMessage());
-
-      //  account.orElseThrow(() -> new GlobalErrorInfoException(ErrorInfoEnum.ERR0013));
-
-     //   return   ResultBody();
-
-       //return  Optional.ofNullable(new AccountResponse.Response(accountService.findBy(memberId))).orElse(new ResultBody());
-
-        //return new ResultBody(new );
-
-
-       // throw new GlobalErrorInfoException(ErrorInfoEnum.ERR0013);
-
-     //   System.out.println("#####" + account.toString());
-
-      //  return new ResultBody();
+        return new ResultBody(accountService.accountResponse(memberId));
     }
+
 
 
 }

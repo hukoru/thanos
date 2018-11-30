@@ -1,6 +1,8 @@
 package com.thanos.api.service;
 
+import com.thanos.api.common.constant.ErrorInfoEnum;
 import com.thanos.api.domain.Account;
+import com.thanos.api.domain.AccountResponse;
 import com.thanos.api.exceptions.GlobalErrorInfoException;
 import com.thanos.api.repository.AccountRepository;
 import lombok.AllArgsConstructor;
@@ -29,7 +31,7 @@ public class AccountService {
         return accountRepository.save(account);
     }
 
-    public Optional<Account> findBy(long id) {
+    private Optional<Account> findBy(long id) {
         return accountRepository.findById(id);
 
         //return accountRepository.getOne(id);
@@ -39,4 +41,10 @@ public class AccountService {
      //       .orElseThrow(() -> new GlobalErrorInfoException(ErrorInfoEnum.ERR0013));
 
     }
+
+    public AccountResponse.Response accountResponse(Long memberId) throws GlobalErrorInfoException {
+        return new AccountResponse.Response(this.findBy(memberId).orElseThrow(() -> new GlobalErrorInfoException(ErrorInfoEnum.ERR0013)));
+    }
+
+
 }

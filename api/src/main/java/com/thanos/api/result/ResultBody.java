@@ -3,6 +3,7 @@ package com.thanos.api.result;
 import com.thanos.api.common.constant.GlobalErrorInfoEnum;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 
 public class ResultBody implements Serializable {
@@ -10,6 +11,8 @@ public class ResultBody implements Serializable {
     private String serverCode = "200";
     private String serverMessage;
     private Object results;
+
+
 
     public ResultBody(ErrorInfo errorInfo) {
         this.serverCode = errorInfo.getCode();
