@@ -1,11 +1,6 @@
 package com.thanos.api.common;
 
-/**
- * Created by LJH on 2016-04-28.
- *
- * 메시지 추가
- * Modify by Leo on 2016-07-13
- */
+
 public enum PushCode {
 
 

@@ -40,7 +40,7 @@ public class MemberController {
      * @param provider
      * @return
      * @throws Exception
-     *//*
+     */
 
     @RequestMapping(value = "/{version}/{device}/{provider}/signup/member", method = RequestMethod.POST)
     @ResponseBody
@@ -51,6 +51,8 @@ public class MemberController {
     ) throws IOException, GlobalErrorInfoException {
 
 
+
+/*
         paramMember.setBirthYear(paramMember.getBirthday().substring(0,4));
         paramMember.setBirthMonth(paramMember.getBirthday().substring(5,6));
         paramMember.setBirthday(paramMember.getBirthday().substring(7,8));
@@ -104,13 +106,12 @@ public class MemberController {
 
         paramMember.setMemberId(memberId);
 
-        MemberResponse resultMemberResponse = new MemberResponse(memberService.MemberInfo(paramMember).getAccessToken());
+        MemberResponse resultMemberResponse = new MemberResponse(memberService.MemberInfo(paramMember).getAccessToken());*/
 
-        return new ResultBody(resultMemberResponse);
+        return new ResultBody();
 
     }
 
-*/
 
 }
 

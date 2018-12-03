@@ -3,9 +3,6 @@ package com.thanos.api.common.filter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-/**
- * Created by LJH on 2016-05-04.
- */
 @Component
 public class FileExtFilter {
 

@@ -14,10 +14,10 @@ public class SpringUtils implements BeanFactoryPostProcessor {
     }
 
     /**
-     * 获取对象
      *
-     * @param name
-     * @return Object 一个以所给名字注册的bean的实例
+     *
+     * @param
+     * @return Object
      * @throws BeansException
      *
      */

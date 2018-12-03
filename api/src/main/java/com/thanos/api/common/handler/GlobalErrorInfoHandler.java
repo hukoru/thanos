@@ -1,4 +1,4 @@
-package com.thanos.api.handler;
+package com.thanos.api.common.handler;
 
 import com.thanos.api.common.MessageUtils;
 import com.thanos.api.common.constant.GlobalErrorInfoEnum;
@@ -20,10 +20,8 @@ public class GlobalErrorInfoHandler {
     private static Logger logger = LoggerFactory.getLogger(GlobalErrorInfoHandler.class);
 
 
-
     @ExceptionHandler(value = RuntimeException.class)
     public ResultBody errorHandlerOverJson(HttpServletRequest request, RuntimeException exception) {
-
         ResultBody result = new ResultBody(GlobalErrorInfoEnum.PARAM_NOT_NULL);
         return result;
     }
@@ -34,8 +32,6 @@ public class GlobalErrorInfoHandler {
     public ResultBody handleGlobalErrorInfoException(HttpServletRequest request, Locale locale, GlobalErrorInfoException exception) {
         ErrorInfo errorInfo = exception.getErrorInfo();
 
-        System.out.println("@@@@@ " + errorInfo.getMessage());
-
         getMessage(errorInfo, locale, exception.getArgs());
 
         ResultBody result = new ResultBody(errorInfo);
@@ -44,7 +40,6 @@ public class GlobalErrorInfoHandler {
 
     private void getMessage(ErrorInfo errorInfo, Locale locale, Object... args) {
         String message = null;
-
 
         if (!StringUtils.isEmpty(errorInfo.getCode())) {
             message = MessageUtils.message(errorInfo.getCode(), locale, args);

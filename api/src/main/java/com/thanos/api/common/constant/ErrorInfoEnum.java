@@ -5,12 +5,11 @@ import com.thanos.api.result.ErrorInfo;
 
 public enum ErrorInfoEnum implements ErrorInfo {
 
-    PARAMS_NOT_NULL("ERR0001", "params not null"),
-    PARAMS_NOT_NULL2("ERR0002", "params not null2"),
-
-    ERR0002("ERR0002","오류가 발생하였습니다. 관리자에게 문의하여 주십시오.")
+      ERR0001("ERR0001","등록된 회원정보가 없습니다.")
+    , ERR0002("ERR0002","오류가 발생하였습니다. 관리자에게 문의하여 주십시오.")
     , ERR0003("ERR0003","로그아웃 상태입니다.")
     , ERR0004("ERR0004","비밀번호가 올바르지 않습니다.")
+
 
     , ERR0007("ERR0007","이성이 없습니다.")
 

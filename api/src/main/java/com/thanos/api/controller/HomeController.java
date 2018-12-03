@@ -22,19 +22,9 @@ import java.util.Optional;
 @Controller
 public class HomeController {
 
-    private static final String template = "Hello, %s!";
-
-    @Autowired
-    private CodeService codeService;
-
     @Autowired
     private MemberService memberService;
 
-    @Autowired
-    private MemberRepository memberRepository;
-
-    @Autowired
-    private AccountRepository accountRepository;
 
     @Autowired
     private AccountService accountService;
@@ -48,28 +38,27 @@ public class HomeController {
 
     @RequestMapping(value = "/healthcheck", method = RequestMethod.GET)
     @ResponseBody
-    public ResultBody healthCheck() {
+    public ResultBody healthCheck() throws GlobalErrorInfoException {
 
-      //  Account account = Account.of("DEFAULT",  "hukoru@naver.com", Account.ProviderType.KAKAOTALK);
+        Optional<Member> uuid = memberService.findBy("AAAA-BBBB-CCCC-DDDD");
 
+        if (uuid.isPresent()) {
+            throw new GlobalErrorInfoException(ErrorInfoEnum.ERR0087);
+        }
 
-        //memberService.createBy(account);
         return new ResultBody();
 
     }
 
     @RequestMapping(value = "/healthcheck2", method = RequestMethod.GET)
     @ResponseBody
-    public ResultBody healthcheck2() throws UnknownHostException {
-
+    public ResultBody healthcheck2() throws UnknownHostException, GlobalErrorInfoException {
 
         Account account = Account.of("DEFAULT", ProviderType.KAKAOTALK, "hukoru@naver.com", "1234");
         accountService.saveBy(account);
 
-        Member member = Member.of("맥주왕", account);
-
-       // Member member = Member.builder().nickname("맥주왕").account(account).build();
-        memberRepository.save(member);
+        Member member = Member.of("맥주왕", "2000", "12", "25" , "AAAA-BBBB-CCCC-DDDD",  account);
+        memberService.saveBy(member);
 
         return new ResultBody();
 
@@ -82,8 +71,6 @@ public class HomeController {
     ) throws GlobalErrorInfoException {
         return new ResultBody(accountService.accountResponse(memberId));
     }
-
-
 
 }
 

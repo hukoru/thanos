@@ -24,40 +24,18 @@ public class MemberRepositoryTest {
 
     @Before
     public void setUp() {
-
     }
 
     @Test
     public void saveMemberTest() {
         Account account = Account.of("DEFAULT", ProviderType.FACEBOOK, "facebook---");
 
-        Member member = Member.of("맥주왕", account);
+        Member member = Member.of("맥주왕", "2000", "12", "25" , "AAAA-BBBB-CCCC-DDDD",  account);
 
         memberRepository.save(member);
 
         nickname = member.getNickname();
-
-
-  //      Account account = Account.of("DEFAULT",Account.ProviderType.KAKAOTALK , "hukoru@naver.com", "1234");
-
-//        accountId = account.getId();
-
-//        Member member = Member.of("맥주왕,", account);
-
-    //    memberRepository.save(member);
-/*
-        System.out.println(member.getNickname());
-        System.out.println(member.getAccount().getAccountId());
-        System.out.println(member.getAccount());*/
-
-
         Assert.assertEquals("맥주왕", nickname);
-
-
-      //  Assert.assertEquals("hukoru@naver.com", providerId);
-
-
-      //  System.out.println(codeList.size());
     }
 
 }

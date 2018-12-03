@@ -13,15 +13,16 @@ public class ResultBody implements Serializable {
     private Object results;
 
 
-
     public ResultBody(ErrorInfo errorInfo) {
         this.serverCode = errorInfo.getCode();
         this.serverMessage = errorInfo.getMessage();
+        this.results = "";
     }
 
     public ResultBody() {
         this.serverCode = GlobalErrorInfoEnum.SUCCESS.getCode();
         this.serverMessage = GlobalErrorInfoEnum.SUCCESS.getMessage();
+        this.results = "";
     }
 
     public ResultBody(Object results) {
