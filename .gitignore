@@ -149,3 +149,5 @@ api/build
 api/src/test/resources/
 design/src/
 schedule/
+
+.gradle
