@@ -4,9 +4,6 @@ import com.thanos.api.common.constant.GlobalErrorInfoEnum;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.io.Serializable;
-import java.util.Optional;
-
 @Getter
 @ToString
 public class ResultBody  {

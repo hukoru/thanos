@@ -3,9 +3,7 @@ package com.thanos.api.result;
 import lombok.Getter;
 import lombok.ToString;
 
-/**
- * Created by 서오석 on 2016. 5. 12..
- */
+
 @Getter
 @ToString
 public class ApiResponse<T> {
@@ -34,6 +32,7 @@ public class ApiResponse<T> {
         this.message = errorInfo.getMessage();
         this.result = null;
     }
+
 
     public static ApiResponse success() {
         return new ApiResponse(successCode, successMsg);

@@ -61,6 +61,4 @@ public class Member extends Auditable<Long> {
         this.account = account;
     }
 
-
-
 }

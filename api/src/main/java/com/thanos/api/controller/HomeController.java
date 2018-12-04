@@ -1,18 +1,16 @@
 package com.thanos.api.controller;
 
 import com.thanos.api.common.constant.ErrorInfoEnum;
-import com.thanos.api.common.constant.ResponseCode;
 import com.thanos.api.domain.*;
 import com.thanos.api.exceptions.GlobalErrorInfoException;
 import com.thanos.api.exceptions.ThanosException;
-import com.thanos.api.result.AccountResponse;
+import com.thanos.api.response.AccountResponse;
 import com.thanos.api.result.ApiResponse;
 import com.thanos.api.service.AccountService;
 import com.thanos.api.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.UnknownHostException;
 import java.util.Optional;
 
@@ -30,8 +28,8 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
-    public Home index(@RequestParam(name="name", required=false, defaultValue="Stranger") String name) {
-        return new Home(1, ResponseCode.OK.getMessage());
+    public ApiResponse index() {
+        return new ApiResponse<>(Home.of(1500));
     }
 
     @RequestMapping(value = "/healthcheck", method = RequestMethod.GET)
@@ -45,8 +43,6 @@ public class HomeController {
         }
 
         return new ApiResponse<>(uuid);
-
-
     }
 
     @RequestMapping(value = "/healthcheck2", method = RequestMethod.GET)
@@ -69,20 +65,18 @@ public class HomeController {
         @PathVariable("memberId") Long memberId
     ) throws GlobalErrorInfoException {
 
-        AccountResponse.Response accountResponse = accountService.accountResponse(memberId);
-        return new ApiResponse<>(accountResponse);
+        AccountResponse.Response accountResponse;   //계정 응답
 
-    }
-
-          /*  try {
-            AccountResponse.Response accountResponse = accountService.accountResponse(memberId);
-            return new ApiResponse<>(accountResponse);
+        try {
+            accountResponse = accountService.accountResponse(memberId);
 
         } catch (ThanosException exception) {
             return ApiResponse.fail(exception.getCode(), exception.getMsg());
         }
 
-*/
+        return new ApiResponse<>(accountResponse);
+
+    }
 
 }
 

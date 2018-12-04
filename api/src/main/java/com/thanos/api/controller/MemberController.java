@@ -1,28 +1,12 @@
 package com.thanos.api.controller;
 
-import com.thanos.api.common.constant.ErrorInfoEnum;
-import com.thanos.api.common.constant.ResponseCode;
-import com.thanos.api.domain.Account;
-import com.thanos.api.domain.Home;
 import com.thanos.api.domain.Member;
-import com.thanos.api.domain.ProviderType;
 import com.thanos.api.exceptions.GlobalErrorInfoException;
-import com.thanos.api.repository.AccountRepository;
-import com.thanos.api.repository.MemberRepository;
 import com.thanos.api.result.ResultBody;
-import com.thanos.api.service.AccountService;
-import com.thanos.api.service.CodeService;
-import com.thanos.api.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.net.URLDecoder;
-import java.net.UnknownHostException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.Map;
 
 
 @Controller
@@ -48,6 +32,7 @@ public class MemberController {
                                @PathVariable("device") String device,
                                @PathVariable("provider") String provider,
                                Member paramMember
+
     ) throws IOException, GlobalErrorInfoException {
 
 
