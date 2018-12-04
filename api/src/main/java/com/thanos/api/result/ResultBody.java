@@ -1,28 +1,35 @@
 package com.thanos.api.result;
 
 import com.thanos.api.common.constant.GlobalErrorInfoEnum;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Optional;
 
+@Getter
+@ToString
+public class ResultBody  {
 
-public class ResultBody implements Serializable {
+    private static final String successCode = "0000";
+    private static final String successMsg = "OK";
 
-    private String serverCode = "200";
-    private String serverMessage;
-    private Object results;
+
+    private final String serverCode;
+    private final String serverMessage;
+    private final Object results;
 
 
     public ResultBody(ErrorInfo errorInfo) {
         this.serverCode = errorInfo.getCode();
         this.serverMessage = errorInfo.getMessage();
-        this.results = "";
+        this.results = null;
     }
 
     public ResultBody() {
-        this.serverCode = GlobalErrorInfoEnum.SUCCESS.getCode();
-        this.serverMessage = GlobalErrorInfoEnum.SUCCESS.getMessage();
-        this.results = "";
+        this.serverCode = successCode;
+        this.serverMessage = successMsg;
+        this.results = null;
     }
 
     public ResultBody(Object results) {
@@ -31,27 +38,5 @@ public class ResultBody implements Serializable {
         this.results = results;
     }
 
-    public String getServerCode() {
-        return serverCode;
-    }
 
-    public void setServerCode(String serverCode) {
-        this.serverCode = serverCode;
-    }
-
-    public String getServerMessage() {
-        return serverMessage;
-    }
-
-    public void setServerMessage(String serverMessage) {
-        this.serverMessage = serverMessage;
-    }
-
-    public Object getResults() {
-        return results;
-    }
-
-    public void setResults(Object results) {
-        this.results = results;
-    }
 }

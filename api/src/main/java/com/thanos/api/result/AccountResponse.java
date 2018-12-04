@@ -5,7 +5,9 @@ import com.thanos.api.domain.ProviderType;
 import lombok.*;
 import javax.validation.constraints.NotNull;
 
-public class AccountResponse extends ResultBody {
+@Data
+@NoArgsConstructor()
+public class AccountResponse {
 
     @Getter
     public static class Response {
