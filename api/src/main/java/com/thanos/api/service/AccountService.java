@@ -2,7 +2,7 @@ package com.thanos.api.service;
 
 import com.thanos.api.common.constant.ErrorInfoEnum;
 import com.thanos.api.domain.Account;
-import com.thanos.api.response.AccountResponse;
+import com.thanos.api.dto.AccountResponse;
 import com.thanos.api.exceptions.GlobalErrorInfoException;
 import com.thanos.api.repository.AccountRepository;
 import lombok.AllArgsConstructor;

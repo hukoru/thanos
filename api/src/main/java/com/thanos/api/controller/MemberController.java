@@ -1,6 +1,8 @@
 package com.thanos.api.controller;
 
-import com.thanos.api.domain.Member;
+import com.thanos.api.common.constant.ErrorInfoEnum;
+import com.thanos.api.common.util.StringUtil;
+import com.thanos.api.dto.MemberRequest;
 import com.thanos.api.exceptions.GlobalErrorInfoException;
 import com.thanos.api.result.ResultBody;
 import org.springframework.stereotype.Controller;
@@ -31,16 +33,16 @@ public class MemberController {
     public ResultBody register(@PathVariable("version") String version,
                                @PathVariable("device") String device,
                                @PathVariable("provider") String provider,
-                               Member paramMember
+                               MemberRequest paramMember
 
     ) throws IOException, GlobalErrorInfoException {
 
+        if(StringUtil.isEmptyAndSpaceCheck(paramMember.getNickname())){
+            throw new GlobalErrorInfoException(ErrorInfoEnum.ERR0084);
+        }
 
 
 /*
-        paramMember.setBirthYear(paramMember.getBirthday().substring(0,4));
-        paramMember.setBirthMonth(paramMember.getBirthday().substring(5,6));
-        paramMember.setBirthday(paramMember.getBirthday().substring(7,8));
 
         //단말기(uuid) 블랙리스트 처리
         if (memberService.selectBlackUuidCount(paramMember) > 0) {

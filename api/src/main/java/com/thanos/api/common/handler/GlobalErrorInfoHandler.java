@@ -3,13 +3,19 @@ package com.thanos.api.common.handler;
 import com.thanos.api.common.MessageUtils;
 import com.thanos.api.common.constant.GlobalErrorInfoEnum;
 import com.thanos.api.exceptions.GlobalErrorInfoException;
+import com.thanos.api.exceptions.HumanApiError;
+import com.thanos.api.result.ApiResponse;
 import com.thanos.api.result.ErrorInfo;
 import com.thanos.api.result.ResultBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -48,5 +54,12 @@ public class GlobalErrorInfoHandler {
             message = errorInfo.getMessage();
         }
         errorInfo.setMessage(message);
+    }
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ApiResponse handleNoHandlerFoundException(NoHandlerFoundException e) {
+        return ApiResponse.fail(GlobalErrorInfoEnum.NOT_FOUND);
     }
 }

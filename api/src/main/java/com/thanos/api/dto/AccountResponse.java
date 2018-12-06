@@ -1,4 +1,4 @@
-package com.thanos.api.response;
+package com.thanos.api.dto;
 
 import com.thanos.api.domain.Account;
 import com.thanos.api.domain.ProviderType;

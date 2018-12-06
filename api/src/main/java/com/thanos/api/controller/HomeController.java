@@ -4,7 +4,7 @@ import com.thanos.api.common.constant.ErrorInfoEnum;
 import com.thanos.api.domain.*;
 import com.thanos.api.exceptions.GlobalErrorInfoException;
 import com.thanos.api.exceptions.ThanosException;
-import com.thanos.api.response.AccountResponse;
+import com.thanos.api.dto.AccountResponse;
 import com.thanos.api.result.ApiResponse;
 import com.thanos.api.service.AccountService;
 import com.thanos.api.service.MemberService;

@@ -1,8 +1,5 @@
 package com.thanos.api.common;
 
-/**
- * Created by Jang on 2016-05-16.
- */
 public class StringUtil {
 
     public final static String EMPTY_STRING = "";
