@@ -31,6 +31,8 @@ dependencies {
 
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
 
+    compile('org.springframework.boot:spring-boot-starter-jooq')
+
     compileOnly('org.projectlombok:lombok')
 
     compile "commons-lang:commons-lang:2.3"
@@ -39,6 +41,7 @@ dependencies {
     testCompile 'org.springframework:spring-test:5.0.1.RELEASE'
     testCompile "org.springframework.restdocs:spring-restdocs-webtestclient:2.0.3.BUILD-SNAPSHOT"
     asciidoctor "org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.3.BUILD-SNAPSHOT"
+
 
     compile('com.h2database:h2')
 
